@@ -2,7 +2,7 @@
 
 class Game
   attr_accessor :currentPlayer, :allHumanMoves, :allCompMoves, :currentHumanMove, :board, :currentCompMove, :sampling
-  
+
   def initialize (human, computer)
     @currentPlayer = 1
     @allHumanMoves = []
@@ -32,9 +32,9 @@ class Game
   end
 
   def makeMove
-    if @currentPlayer.odd?  
+    if @currentPlayer.odd?
       humanMoves
-    elsif @currentPlayer.even? 
+    elsif @currentPlayer.even?
       compMoves
     end
   end
@@ -68,16 +68,16 @@ class Game
       elsif @currentPlayer.even?
         puts "You win!"
       end
-      return true
+      true
     else
-      return false      
+      false
     end
   end
 
 
 
   def winningCombos
-    if 
+    if
       (@board[0] == @board[3] && @board[3] == @board[6]) ||
       (@board[1] == @board[4] && @board[4] == @board[7]) ||
       (@board[2] == @board[5] && @board[5] == @board[8]) ||
@@ -85,8 +85,8 @@ class Game
       (@board[3] == @board[4] && @board[4] == @board[5]) ||
       (@board[2] == @board[5] && @board[5] == @board[8]) ||
       (@board[0] == @board[4] && @board[4] == @board[8]) ||
-      (@board[2] == @board[4] && @board[4] == @board[6]) 
-      return true  
+      (@board[2] == @board[4] && @board[4] == @board[6])
+      return true
     else
       return false
     end
@@ -95,7 +95,7 @@ class Game
 
 
   def draw
-    if 
+    if
       @currentPlayer == 10
       puts "It's a draw!"
       #playAgain
@@ -105,9 +105,9 @@ class Game
   # def playAgain#(human, computer)
   #   puts "Want to play again? Enter YES for a new game!"
   #   ask = gets.chomp
-  #   if ask == 'YES' 
-  #     Game.new('old player', 'X')
-  #     @board = [1,2,3,4,5,6,7,8,9]
+  #   if ask == 'YES'
+  #     game2 = Game.new('old player', 'X')
+  #     game2.@board = [1,2,3,4,5,6,7,8,9]
   #   else
   #     puts "Thanks for playing!"
   #   end
@@ -125,45 +125,12 @@ class Human
 end
 
 
-class Computer 
+class Computer
   attr_accessor :compMarker
   def initialize (marker)
     @marker = marker
   end
 end
 
-
-class Runner
-
-  def self.welcome
-    puts "Welcome to tic-tac-toe! Please enter your name."
-    name = gets.chomp
-    puts "Hello #{name}! You're playing as X."
-
-    @human = Human.new(name, 'X')
-    @computer = Computer.new('O')
-    @game1 = Game.new(@human, @computer)
-    puts "Below is your game board."
-  end
-
-  welcome
-
-
-  # humanMarker = 'X'
-  # compMarker ='O'
-  # puts "Hello #{name}! Please choose X or O."
-  # symbols = ['X','O']
-  # humanMarker = gets.chomp
-  # compMarker = symbols - humanMarker.split
-  # compMarker = compMarker.join 
-
-  @game1.printBoard
-  puts "It's your turn."
-  @game1.makeMove
-  until @game1.checkWinner == true || @game1.draw == true
-    @game1.makeMove
-  end
-  #Game.new(@human, @computer).playAgain#(@human, @computer)
-end
 
 #Pry.start
