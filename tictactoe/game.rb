@@ -26,7 +26,6 @@ class Game
   def updateBoard
 
     board[currentHumanMove.to_i-1] = 'X'
-
     if currentCompMove!=0
       board[currentCompMove.to_i-1 ] = 'O'
     end

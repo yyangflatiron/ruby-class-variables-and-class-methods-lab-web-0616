@@ -10,7 +10,7 @@ class MoveMaker
       name = gets.chomp
       puts "Hello #{name}! You're playing as X."
       @human = Human.new(name, 'X')
-      @human.add_game(@game)
+      @human.add_game(@game) #adding game to the player's profile
       @computer = Computer.new('O')
       @game = Game.new(@human, @computer)
     end
