@@ -1,4 +1,4 @@
-#require 'Pry'
+
 
 class Game
   attr_accessor :currentPlayer, :allHumanMoves, :allCompMoves, :currentHumanMove, :board, :currentCompMove, :sampling
@@ -24,7 +24,9 @@ class Game
   end
 
   def updateBoard
+
     board[currentHumanMove.to_i-1] = 'X'
+
     if currentCompMove!=0
       board[currentCompMove.to_i-1 ] = 'O'
     end
@@ -114,23 +116,3 @@ class Game
   # end
 
 end
-
-
-class Human
-  attr_accessor :humanName, :humanMarker
-  def initialize (name, marker)
-    @name = name
-    @marker = marker
-  end
-end
-
-
-class Computer
-  attr_accessor :compMarker
-  def initialize (marker)
-    @marker = marker
-  end
-end
-
-
-#Pry.start
