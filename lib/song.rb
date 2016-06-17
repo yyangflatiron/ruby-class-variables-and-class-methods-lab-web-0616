@@ -4,9 +4,9 @@ class Song
 @@count = 0
 @@genres = []
 @@artists = []
-@@genreNum
-@@artistsNum = {}
-attr_accessor :name, :artist, :genre, :genres
+#@@artistsNum = {}
+
+attr_accessor :name, :artist, :genre
 
   def initialize(name,artist,genre)
     @name = name
@@ -31,20 +31,16 @@ attr_accessor :name, :artist, :genre, :genres
     @@genres.uniq
   end
 
-  def self.genre_count(genres)
-    genreHash = {}
-    @@genres.each_with_object({}) do |genre, genreHash|
-      if genreHash.keys.include?(:genre)
-        genreHash[:genre] += 1
-      else
-        genreHash[:genre] = 1
-      end
-    genreHash
-    #@@genre.each do |genre|
-      #populate with key value pairs
+  def self.genre_count
+    @@genres.each_with_object({}) do |gr, genreHash|
+      genreHash[gr] = @@genres.count(gr)
+    end 
   end
 
   def self.artist_count
+    @@artists.each_with_object({}) do |artist, artistHash|
+      artistHash[artist] = @@artists.count(artist)
+    end
   end
 
 
